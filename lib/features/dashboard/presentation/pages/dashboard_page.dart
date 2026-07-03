@@ -99,11 +99,11 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                       itemCount: shipmentState.shipments.length,
                       itemBuilder: (context, index) {
                         final shipment = shipmentState.shipments[index];
-
                         return ShipmentTile(
-                          trackingId: shipment.trackingId,
-                          customer: shipment.customer,
-                          status: shipment.status,
+                          shipment: shipment,
+                          onTap: () {
+                            context.push('/shipment-details', extra: shipment);
+                          },
                         );
                       },
                     ),
@@ -111,6 +111,16 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                 ],
               ),
             ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final created = await context.push<bool>('/create-shipment');
+
+          if (created == true && mounted) {
+            ref.read(shipmentNotifierProvider.notifier).loadShipments();
+          }
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }

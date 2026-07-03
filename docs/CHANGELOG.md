@@ -1,3 +1,5 @@
+# Changelog
+
 ## July 3, 2026 
 - Added LoginUseCase
 - Added AuthNotifier
@@ -10,10 +12,29 @@
 
 * Splash screen
 * Auto login check
-* Logout functionality
 * Persistent login using Secure Storage
+* Logout functionality
 * Dashboard overview with summary cards
 * Recent shipments list
-* Reusable `DashboardCard` widget
-* Reusable `ShipmentTile` widget
+* Shipment details page
+* Create shipment form
+* Edit shipment functionality
+* Local shipment data source
+* Common form validators
+
+### Reusable Components
+
+* `DashboardCard`
+* `ShipmentTile`
+* `InfoTile`
+* `AppTextField`
+* `AppDropdown`
+* `AppButton`
+
+### Improvements
+
+* Status icons and colors in `ShipmentTile`
+* Shared form controller
+* Clean CRUD architecture using Repository, Use Cases, Riverpod, and GoRouter
+
 
