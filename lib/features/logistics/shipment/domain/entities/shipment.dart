@@ -1,4 +1,5 @@
 class Shipment {
+  final int? id;
   final String trackingId;
   final String customer;
   final String phone;
@@ -6,6 +7,7 @@ class Shipment {
   final String status;
 
   const Shipment({
+    this.id,
     required this.trackingId,
     required this.customer,
     required this.phone,

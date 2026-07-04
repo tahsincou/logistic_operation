@@ -1,0 +1,20 @@
+{
+  "shipments": [
+    {
+      "id": "2",
+      "trackingId": "TRK002",
+      "customer": "Alice",
+      "phone": "01700000002",
+      "address": "Chattogram",
+      "status": "Delivered"
+    },
+    {
+      "id": 1,
+      "trackingId": "TRK001",
+      "customer": "Updated John",
+      "phone": "01700000001",
+      "address": "Dhaka",
+      "status": "Delivered"
+    }
+  ]
+}

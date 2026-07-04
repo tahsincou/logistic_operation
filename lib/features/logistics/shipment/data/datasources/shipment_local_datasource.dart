@@ -1,53 +1,45 @@
+import 'package:dio/dio.dart';
+import 'package:logistic_operation/features/logistics/shipment/data/models/shipement_model.dart';
+import 'package:logistic_operation/features/logistics/shipment/domain/params/create_shipment.dart';
 import '../../domain/entities/shipment.dart';
 
-class ShipmentLocalDataSource {
-  ShipmentLocalDataSource() {
-    _shipments.addAll([
-      const Shipment(
-        trackingId: 'TRK-1001',
-        customer: 'John Doe',
-        phone: '+1 555 123 456',
-        address: '221B Baker Street, London',
-        status: 'Delivered',
-      ),
-      const Shipment(
-        trackingId: 'TRK-1002',
-        customer: 'Alice Smith',
-        phone: '+1 555 987 654',
-        address: '742 Evergreen Terrace',
-        status: 'Pending',
-      ),
-      const Shipment(
-        trackingId: 'TRK-1003',
-        customer: 'David Brown',
-        phone: '+1 555 456 789',
-        address: '1600 Pennsylvania Ave',
-        status: 'Failed',
-      ),
-    ]);
-  }
+class ShipmentRemoteDataSource {
+  final Dio dio;
 
-  final List<Shipment> _shipments = [];
+  ShipmentRemoteDataSource(this.dio);
 
   Future<List<Shipment>> getShipments() async {
-    return List.from(_shipments);
+    final response = await dio.get('/shipments');
+
+    return (response.data as List)
+        .map((e) => ShipmentModel.fromJson(e))
+        .toList();
   }
 
-  Future<void> addShipment(Shipment shipment) async {
-    _shipments.insert(0, shipment);
+  Future<void> createShipment(CreateShipmentRequest request) async {
+    await dio.post(
+      '/shipments',
+      data: {
+        'customer': request.customer,
+        'phone': request.phone,
+        'address': request.address,
+      },
+    );
   }
 
   Future<void> updateShipment(Shipment shipment) async {
-    final index = _shipments.indexWhere(
-      (e) => e.trackingId == shipment.trackingId,
+    final model = ShipmentModel(
+      trackingId: shipment.trackingId,
+      customer: shipment.customer,
+      phone: shipment.phone,
+      address: shipment.address,
+      status: shipment.status,
     );
 
-    if (index != -1) {
-      _shipments[index] = shipment;
-    }
+    await dio.put('/shipments/${shipment.trackingId}', data: model.toJson());
   }
 
   Future<void> deleteShipment(String trackingId) async {
-    _shipments.removeWhere((shipment) => shipment.trackingId == trackingId);
+    await dio.delete('/shipments/$trackingId');
   }
 }

@@ -3,39 +3,31 @@ import 'package:logistic_operation/features/logistics/shipment/domain/params/cre
 
 import '../../domain/entities/shipment.dart';
 import '../../domain/repository/shipment_repository.dart';
-import '../mock/mock_shipments.dart';
 
 class ShipmentRepositoryImpl implements ShipmentRepository {
-  ShipmentRepositoryImpl(this.localDataSource);
+  ShipmentRepositoryImpl({required this.remoteDataSource});
 
-  final ShipmentLocalDataSource localDataSource;
+  final ShipmentRemoteDataSource remoteDataSource;
+
   @override
   Future<List<Shipment>> getRecentShipments() async {
     await Future.delayed(const Duration(milliseconds: 300));
 
-    return localDataSource.getShipments();
+    return remoteDataSource.getShipments();
   }
 
   @override
   Future<void> createShipment(CreateShipmentRequest request) async {
-    final shipment = Shipment(
-      trackingId: 'TRK-${DateTime.now().millisecondsSinceEpoch}',
-      customer: request.customer,
-      phone: request.phone,
-      address: request.address,
-      status: 'Pending',
-    );
-
-    await localDataSource.addShipment(shipment);
+    await remoteDataSource.createShipment(request);
   }
 
   @override
   Future<void> updateShipment(Shipment shipment) {
-    return localDataSource.updateShipment(shipment);
+    return remoteDataSource.updateShipment(shipment);
   }
 
   @override
   Future<void> deleteShipment(String trackingId) {
-    return localDataSource.deleteShipment(trackingId);
+    return remoteDataSource.deleteShipment(trackingId);
   }
 }

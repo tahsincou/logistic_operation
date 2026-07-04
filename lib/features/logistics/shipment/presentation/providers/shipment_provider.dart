@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logistic_operation/core/network/dio_client.dart';
 import 'package:logistic_operation/features/logistics/shipment/data/datasources/shipment_local_datasource.dart';
 import 'package:logistic_operation/features/logistics/shipment/data/repository/shipment_repository_impl.dart';
 import 'package:logistic_operation/features/logistics/shipment/domain/usecases/create_shipment_usecase.dart';
@@ -9,7 +11,9 @@ import 'package:logistic_operation/features/logistics/shipment/domain/usecases/u
 import '../../domain/repository/shipment_repository.dart';
 
 final shipmentRepositoryProvider = Provider<ShipmentRepository>((ref) {
-  return ShipmentRepositoryImpl(ref.read(shipmentLocalDataSourceProvider));
+  return ShipmentRepositoryImpl(
+    remoteDataSource: ref.read(shipmentRemoteDataSourceProvider),
+  );
 });
 
 final getRecentShipmentsUseCaseProvider = Provider<GetRecentShipmentsUseCase>((
@@ -22,10 +26,14 @@ final createShipmentUseCaseProvider = Provider<CreateShipmentUseCase>((ref) {
   return CreateShipmentUseCase(ref.read(shipmentRepositoryProvider));
 });
 
-final shipmentLocalDataSourceProvider = Provider<ShipmentLocalDataSource>((
+final dioProvider = Provider<Dio>((ref) {
+  return DioClient.create();
+});
+
+final shipmentRemoteDataSourceProvider = Provider<ShipmentRemoteDataSource>((
   ref,
 ) {
-  return ShipmentLocalDataSource();
+  return ShipmentRemoteDataSource(ref.read(dioProvider));
 });
 
 final updateShipmentUseCaseProvider = Provider<UpdateShipmentUseCase>((ref) {
