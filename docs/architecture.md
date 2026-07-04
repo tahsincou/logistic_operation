@@ -1,4 +1,4 @@
-## Architecture
+## Live/Demo Architecture
 
 ```mermaid
 graph TD
@@ -16,3 +16,16 @@ graph TD
     Repo --> UseCases[Use Cases]
     UseCases --> Riverpod
     Riverpod --> UI
+```
+
+## Offline Architecture
+
+```mermaid
+graph TD
+    UI --> UseCase
+    UseCase --> Repository
+    Repository --> Remote[Remote Data Source]
+    Repository --> Local[Local Data Source]
+    Remote --> SQLite[SQLite Cache]
+    Local --> SQLite
+```

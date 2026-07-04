@@ -1,19 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logistic_operation/features/logistics/shipment/presentation/notifiers/shipment_details/shipment_details_provider.dart';
 import 'package:logistic_operation/features/logistics/shipment/presentation/providers/shipment_notifier.dart';
 import 'package:logistic_operation/shared/widgets/confirmation_dialog.dart';
 import 'package:logistic_operation/shared/widgets/info_tile.dart';
 
 import '../../domain/entities/shipment.dart';
 
-class ShipmentDetailsPage extends ConsumerWidget {
+class ShipmentDetailsPage extends ConsumerStatefulWidget {
   final Shipment shipment;
 
   const ShipmentDetailsPage({super.key, required this.shipment});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _ShipmentDetailsPageState();
+}
+
+class _ShipmentDetailsPageState extends ConsumerState<ShipmentDetailsPage> {
+  @override
+  void initState() {
+    super.initState();
+
+    Future.microtask(() {
+      ref
+          .read(shipmentDetailsNotifierProvider.notifier)
+          .load(widget.shipment.trackingId);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Shipment Details'),
@@ -23,7 +41,7 @@ class ShipmentDetailsPage extends ConsumerWidget {
             onPressed: () async {
               final updated = await context.push<bool>(
                 '/edit-shipment',
-                extra: shipment,
+                extra: widget.shipment,
               );
 
               if (updated == true && context.mounted) {
@@ -45,7 +63,7 @@ class ShipmentDetailsPage extends ConsumerWidget {
               if (confirmed != true) return;
               final success = await ref
                   .read(shipmentNotifierProvider.notifier)
-                  .deleteShipment(shipment.trackingId);
+                  .deleteShipment(widget.shipment.trackingId);
 
               if (!context.mounted) return;
 
@@ -77,7 +95,7 @@ class ShipmentDetailsPage extends ConsumerWidget {
                             style: TextStyle(fontSize: 12, color: Colors.grey),
                           ),
                           Text(
-                            shipment.trackingId,
+                            widget.shipment.trackingId,
                             style: const TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.bold,
@@ -95,21 +113,25 @@ class ShipmentDetailsPage extends ConsumerWidget {
             InfoTile(
               icon: Icons.person,
               title: 'Customer',
-              value: shipment.customer,
+              value: widget.shipment.customer,
             ),
 
-            InfoTile(icon: Icons.phone, title: 'Phone', value: shipment.phone),
+            InfoTile(
+              icon: Icons.phone,
+              title: 'Phone',
+              value: widget.shipment.phone,
+            ),
 
             InfoTile(
               icon: Icons.location_on,
               title: 'Address',
-              value: shipment.address,
+              value: widget.shipment.address,
             ),
 
             InfoTile(
               icon: Icons.local_shipping,
               title: 'Status',
-              value: shipment.status,
+              value: widget.shipment.status,
             ),
           ],
         ),

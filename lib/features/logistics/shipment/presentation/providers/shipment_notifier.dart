@@ -22,9 +22,9 @@ class ShipmentNotifier extends StateNotifier<ShipmentState> {
 
     try {
       final shipments = await ref.read(getRecentShipmentsUseCaseProvider)();
-      _allShipments = shipments;
+      _allShipments = shipments.data;
 
-      state = state.copyWith(shipments: shipments, isLoading: false);
+      state = state.copyWith(shipments: shipments.data, isLoading: false);
     } catch (e) {
       state = state.copyWith(isLoading: false, error: e.toString());
     }

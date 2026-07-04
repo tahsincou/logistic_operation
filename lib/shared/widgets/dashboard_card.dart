@@ -20,7 +20,7 @@ class DashboardCard extends StatelessWidget {
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,7 +28,7 @@ class DashboardCard extends StatelessWidget {
             if (icon != null)
               Icon(
                 icon,
-                size: 15,
+                size: 25,
                 color: iconColor ?? Theme.of(context).primaryColor,
               ),
 
@@ -39,7 +39,7 @@ class DashboardCard extends StatelessWidget {
 
             Text(
               title,
-              style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+              style: TextStyle(fontSize: 15, color: Colors.grey.shade600),
             ),
           ],
         ),

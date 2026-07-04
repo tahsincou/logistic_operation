@@ -18,10 +18,14 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
   Future<void> loadSummary() async {
     state = state.copyWith(isLoading: true);
 
-    final shipments = await _shipmentRepository.getRecentShipments();
+    final result = await _shipmentRepository.getRecentShipments();
 
-    final summary = DashboardSummaryCalculator.calculate(shipments);
+    final summary = DashboardSummaryCalculator.calculate(result.data);
 
-    state = state.copyWith(isLoading: false, summary: summary);
+    state = state.copyWith(
+      isLoading: false,
+      summary: summary,
+      isFromCache: result.isFromCache,
+    );
   }
 }

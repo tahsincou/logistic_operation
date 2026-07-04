@@ -36,8 +36,10 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
     final summary = ref.watch(dashboardSummaryProvider);
     return Scaffold(
       appBar: AppBar(
-        //title: const Text('Welcome'),
+        title: const Text('Parcel Pathai'),
         actions: [
+          if (state.isFromCache)
+            Icon(Icons.wifi_off, color: Colors.red.shade700),
           IconButton(
             onPressed: () async {
               await ref.read(authNotifierProvider.notifier).logout();
@@ -64,7 +66,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Today\'s Overview',
+                      'Overview',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -73,14 +75,15 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
 
                     const SizedBox(height: 16),
 
-                    SingleChildScrollView(
+                    SizedBox(
+                      height: 150,
                       child: GridView.count(
                         controller: ScrollController(),
                         shrinkWrap: true,
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 12,
-                        childAspectRatio: 1.6,
+                        crossAxisCount: 4,
+                        crossAxisSpacing: 4,
+                        mainAxisSpacing: 4,
+                        childAspectRatio: 0.8,
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
                           DashboardCard(

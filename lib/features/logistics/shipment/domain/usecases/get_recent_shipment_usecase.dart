@@ -1,3 +1,5 @@
+import 'package:logistic_operation/core/common/repository_result.dart';
+
 import '../entities/shipment.dart';
 import '../repository/shipment_repository.dart';
 
@@ -6,7 +8,7 @@ class GetRecentShipmentsUseCase {
 
   const GetRecentShipmentsUseCase(this.repository);
 
-  Future<List<Shipment>> call() {
+  Future<RepositoryResult<List<Shipment>>> call() {
     return repository.getRecentShipments();
   }
 }

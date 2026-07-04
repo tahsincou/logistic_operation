@@ -8,11 +8,13 @@ class ShipmentState {
   final String? error;
   final String searchQuery;
   final ShipmentStatusFilter statusFilter;
+  final bool isFromCache;
 
   const ShipmentState({
     this.isLoading = false,
     this.isSubmitting = false,
     this.shipments = const [],
+    this.isFromCache = false,
     this.error,
     this.searchQuery = '',
     this.statusFilter = ShipmentStatusFilter.all,
@@ -33,6 +35,7 @@ class ShipmentState {
       error: error,
       searchQuery: searchQuery ?? this.searchQuery,
       statusFilter: statusFilter ?? this.statusFilter,
+      isFromCache: isFromCache ?? this.isFromCache,
     );
   }
 }
