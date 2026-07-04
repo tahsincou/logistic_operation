@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logistic_operation/shared/widgets/app_loading.dart';
 import 'package:logistic_operation/shared/widgets/environment_badge.dart';
 import 'package:logistic_operation/shared/widgets/environment_bottom_sheet.dart';
 
@@ -85,11 +86,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 child: ElevatedButton(
                   onPressed: state.isLoading ? null : _login,
                   child: state.isLoading
-                      ? const SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: CircularProgressIndicator(strokeWidth: 2),
-                        )
+                      ? const AppLoading(message: 'Logging in...')
                       : const Text('Login'),
                 ),
               ),

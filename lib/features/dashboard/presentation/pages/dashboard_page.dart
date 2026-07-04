@@ -5,6 +5,8 @@ import 'package:logistic_operation/features/auth/presentaion/providers/auth_noti
 import 'package:logistic_operation/features/dashboard/presentation/providers/dashboard_notifier.dart';
 import 'package:logistic_operation/features/dashboard/presentation/providers/dashboard_provider.dart';
 import 'package:logistic_operation/features/logistics/shipment/presentation/providers/shipment_notifier.dart';
+import 'package:logistic_operation/shared/widgets/app_empty.dart';
+import 'package:logistic_operation/shared/widgets/app_loading.dart';
 import 'package:logistic_operation/shared/widgets/app_search_field.dart';
 import 'package:logistic_operation/shared/widgets/dashboard_card.dart';
 import 'package:logistic_operation/shared/widgets/empty_state.dart';
@@ -53,7 +55,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
         ],
       ),
       body: state.isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? const Center(child: AppLoading(message: 'Loading dashboard...'))
           : RefreshIndicator(
               onRefresh: () async {
                 await ref
@@ -153,11 +155,10 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                         },
                         child: shipmentState.shipments.isEmpty
                             ? Center(
-                                child: EmptyState(
+                                child: const AppEmpty(
+                                  title: 'No Shipments',
+                                  message: 'Create your first shipment.',
                                   icon: Icons.local_shipping_outlined,
-                                  title: 'No Shipments Found',
-                                  message:
-                                      'Tap + to create your first shipment.',
                                 ),
                               )
                             : ListView.builder(

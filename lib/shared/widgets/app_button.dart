@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:logistic_operation/shared/widgets/app_loading.dart';
 
 class AppButton extends StatelessWidget {
   final String text;
@@ -21,13 +22,7 @@ class AppButton extends StatelessWidget {
       height: 50,
       child: ElevatedButton(
         onPressed: isLoading ? null : onPressed,
-        child: isLoading
-            ? const SizedBox(
-                height: 22,
-                width: 22,
-                child: CircularProgressIndicator(strokeWidth: 2),
-              )
-            : Text(text),
+        child: isLoading ? const AppLoading(message: 'Loading...') : Text(text),
       ),
     );
   }

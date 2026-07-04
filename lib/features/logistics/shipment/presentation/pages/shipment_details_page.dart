@@ -4,7 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:logistic_operation/features/logistics/shipment/presentation/notifiers/shipment_details/shipment_details_provider.dart';
 import 'package:logistic_operation/features/logistics/shipment/presentation/providers/shipment_notifier.dart';
 import 'package:logistic_operation/features/logistics/shipment/presentation/widgets/shipment_timeline_widget.dart';
-import 'package:logistic_operation/shared/constants/app_spacing.dart';
+import 'package:logistic_operation/shared/theme/app_spacing.dart';
+import 'package:logistic_operation/shared/widgets/app_card.dart';
+import 'package:logistic_operation/shared/widgets/app_loading.dart';
+import 'package:logistic_operation/shared/widgets/app_section.dart';
 import 'package:logistic_operation/shared/widgets/confirmation_dialog.dart';
 import 'package:logistic_operation/shared/widgets/info_tile.dart';
 
@@ -37,7 +40,9 @@ class _ShipmentDetailsPageState extends ConsumerState<ShipmentDetailsPage> {
     final state = ref.watch(shipmentDetailsNotifierProvider);
 
     if (state.isLoading) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      return const Scaffold(
+        body: Center(child: AppLoading(message: 'Loading shipment details...')),
+      );
     }
     return Scaffold(
       appBar: AppBar(
@@ -74,11 +79,7 @@ class _ShipmentDetailsPageState extends ConsumerState<ShipmentDetailsPage> {
           children: [
             Padding(
               padding: const EdgeInsets.all(10),
-              child: Card(
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
+              child: AppCard(
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Row(
@@ -92,7 +93,7 @@ class _ShipmentDetailsPageState extends ConsumerState<ShipmentDetailsPage> {
                         ),
                         child: const Icon(Icons.local_shipping, size: 36),
                       ),
-                      const SizedBox(width: AppSpacing.s),
+                      const SizedBox(width: AppSpacing.sm),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,10 +127,10 @@ class _ShipmentDetailsPageState extends ConsumerState<ShipmentDetailsPage> {
                 ),
               ),
             ),
-            const SizedBox(height: AppSpacing.m),
+            const SizedBox(height: AppSpacing.md),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Card(
+              child: AppCard(
                 child: Column(
                   children: [
                     InfoTile(
@@ -159,35 +160,20 @@ class _ShipmentDetailsPageState extends ConsumerState<ShipmentDetailsPage> {
                 ),
               ),
             ),
-            const SizedBox(height: AppSpacing.m),
+            const SizedBox(height: AppSpacing.md),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          const Icon(Icons.route),
-
-                          const SizedBox(width: 8),
-
-                          Text(
-                            "Shipment Progress",
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                        ],
-                      ),
-
-                      const SizedBox(height: 24),
-
-                      ShipmentTimelineWidget(
+              child: AppCard(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppSection(
+                      title: "Shipment Progress",
+                      child: ShipmentTimelineWidget(
                         timeline: state.details?.timeline ?? const [],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
