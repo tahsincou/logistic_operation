@@ -1,30 +1,26 @@
-import 'app_environment.dart';
+import '../services/environment_service.dart';
 
 class AppConfig {
-  static const String _env = String.fromEnvironment(
-    'ENV',
-    defaultValue: 'demo',
-  );
+  static String _environment = 'demo';
 
-  static AppEnvironment get environment {
-    switch (_env.toLowerCase()) {
-      case 'live':
-        return AppEnvironment.live;
-      case 'demo':
-      default:
-        return AppEnvironment.demo;
-    }
+  static Future<void> initialize() async {
+    _environment = await EnvironmentService.load();
   }
 
-  static bool get isDemo => environment == AppEnvironment.demo;
+  static bool get isDemo => _environment == 'demo';
+
+  static String get environment => _environment;
 
   static String get baseUrl {
-    switch (environment) {
-      case AppEnvironment.demo:
-        return 'http://localhost:3000';
-
-      case AppEnvironment.live:
-        return 'https://your-production-api.com';
+    if (isDemo) {
+      return 'http://localhost:3000';
     }
+
+    return 'https://your-production-api.com';
+  }
+
+  static Future<void> changeEnvironment(String env) async {
+    _environment = env;
+    await EnvironmentService.save(env);
   }
 }

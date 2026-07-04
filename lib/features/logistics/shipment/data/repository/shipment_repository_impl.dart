@@ -1,4 +1,4 @@
-import 'package:logistic_operation/features/logistics/shipment/data/datasources/shipment_local_datasource.dart';
+import 'package:logistic_operation/features/logistics/shipment/data/datasources/shipment_remote_datasource.dart';
 import 'package:logistic_operation/features/logistics/shipment/domain/params/create_shipment.dart';
 
 import '../../domain/entities/shipment.dart';

@@ -1,16 +1,30 @@
 import 'package:dio/dio.dart';
+import 'package:logistic_operation/core/network/interceptors/auth_interceptor.dart';
+import 'package:logistic_operation/core/network/interceptors/error_interceptor.dart';
+import 'package:logistic_operation/core/network/interceptors/logging_interceptor.dart';
+import 'package:logistic_operation/core/storage/secure_storage_service.dart';
+import '../config/app_config.dart';
 
 class DioClient {
-  static Dio create() {
+  final SecureStorageService secureStorage;
+
+  DioClient(this.secureStorage);
+
+  Dio create() {
     final dio = Dio(
       BaseOptions(
-        baseUrl: 'http://localhost:3000',
-        connectTimeout: const Duration(seconds: 10),
-        receiveTimeout: const Duration(seconds: 10),
+        baseUrl: AppConfig.baseUrl,
+        connectTimeout: const Duration(seconds: 15),
+        receiveTimeout: const Duration(seconds: 15),
+        headers: {'Content-Type': 'application/json'},
       ),
     );
 
-    dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
+    dio.interceptors.addAll([
+      AuthInterceptor(secureStorage),
+      LoggingInterceptor(),
+      ErrorInterceptor(),
+    ]);
 
     return dio;
   }

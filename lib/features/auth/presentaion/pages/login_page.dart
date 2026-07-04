@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logistic_operation/shared/widgets/environment_badge.dart';
+import 'package:logistic_operation/shared/widgets/environment_bottom_sheet.dart';
 
 import '../providers/auth_notifier.dart';
 
@@ -100,6 +102,19 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     style: const TextStyle(color: Colors.red),
                   ),
                 ),
+
+              const SizedBox(height: 20),
+              EnvironmentBadge(
+                onLongPress: () async {
+                  final changed = await showEnvironmentBottomSheet(context);
+
+                  if (!context.mounted) return;
+
+                  if (true == changed) {
+                    context.go('/splash');
+                  }
+                },
+              ),
             ],
           ),
         ),

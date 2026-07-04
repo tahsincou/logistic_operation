@@ -7,6 +7,6 @@ final flutterSecureStorageProvider = Provider<FlutterSecureStorage>(
   (ref) => const FlutterSecureStorage(),
 );
 
-final secureStorageProvider = Provider<SecureStorageService>((ref) {
-  return SecureStorageService(ref.read(flutterSecureStorageProvider));
+final secureStorageServiceProvider = Provider<SecureStorageService>((ref) {
+  return SecureStorageService(const FlutterSecureStorage());
 });
