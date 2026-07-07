@@ -14,74 +14,45 @@ cd <project-folder>
 
 ---
 
-## 2. Install Dependencies
+## 2. Setup Project
+
+Run the setup command:
 
 ```bash
-flutter pub get
+make setup
 ```
+
+This will:
+
+* Configure the application name
+* Update bundle ID
+* Install required dependencies
+* Prepare the project for development
 
 ---
 
-## 3. Configure Project Name
+## 3. Run Application
 
-Run the setup script:
-
-```bash
-chmod +x scripts/setup_project.sh
-
-./scripts/setup_project.sh
-```
-
-Provide:
-
-* Application name
-* Bundle ID
-
-Example:
-
-```
-App Name: LogiShield
-
-Bundle ID: com.company.logishield
-```
-
-The script will update the project identifiers.
-
----
-
-## 4. Generate Required Files
-
-If localization is enabled:
+Start the application:
 
 ```bash
-flutter gen-l10n
-```
-
----
-
-## 5. Run Application
-
-Check available devices:
-
-```bash
-flutter devices
-```
-
-Run:
-
-```bash
-flutter run
+make run
 ```
 
 ---
 
 ## Development Commands
 
-Clean build:
+Get dependencies:
 
 ```bash
-flutter clean
-flutter pub get
+make get
+```
+
+Clean project:
+
+```bash
+make clean
 ```
 
 Analyze code:
@@ -98,4 +69,4 @@ flutter test
 
 ---
 
-The project is now ready for development!!!
+The project is now ready for development.
