@@ -1,4 +1,4 @@
-# Logistic Operation
+# MVP Starter App
 
 A Flutter logistics operation template built with Clean Architecture, Riverpod, GoRouter, and Dio. The project supports both **Demo Mode** (JSON Server) and **Live Mode** (REST API).
 
