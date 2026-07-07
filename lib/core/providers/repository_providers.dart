@@ -1,11 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logistic_operation/core/providers/providers.dart';
-import 'package:logistic_operation/features/auth/data/repository/auth_repository.dart';
-import 'package:logistic_operation/features/auth/data/repository/auth_repository_impl.dart';
-import 'package:logistic_operation/features/dashboard/data/repository/dashboard_repository_impl.dart';
-import 'package:logistic_operation/features/dashboard/domain/repository/dashboard_repository.dart';
-import 'package:logistic_operation/features/logistics/shipment/data/repository/shipment_repository_impl.dart';
-import 'package:logistic_operation/features/logistics/shipment/domain/repository/shipment_repository.dart';
+import 'package:flutter_mvp_starter/core/providers/providers.dart';
+import 'package:flutter_mvp_starter/features/auth/data/repository/auth_repository.dart';
+import 'package:flutter_mvp_starter/features/auth/data/repository/auth_repository_impl.dart';
+import 'package:flutter_mvp_starter/features/dashboard/data/repository/dashboard_repository_impl.dart';
+import 'package:flutter_mvp_starter/features/dashboard/domain/repository/dashboard_repository.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/data/repository/shipment_repository_impl.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/domain/repository/shipment_repository.dart';
 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
   return AuthRepositoryImpl(

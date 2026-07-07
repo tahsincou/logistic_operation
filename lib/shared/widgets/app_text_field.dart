@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:logistic_operation/shared/theme/app_radius.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController controller;

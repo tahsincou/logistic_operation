@@ -1,5 +1,5 @@
-import 'package:logistic_operation/core/network/api_client.dart';
-import 'package:logistic_operation/features/auth/data/model/user_model.dart';
+import 'package:flutter_mvp_starter/core/network/api_client.dart';
+import 'package:flutter_mvp_starter/features/auth/data/model/user_model.dart';
 
 import '../../../../core/network/api_endpoints.dart';
 import '../dto/login_request.dart';

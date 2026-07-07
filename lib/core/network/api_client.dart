@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:logistic_operation/core/network/network_exception.dart';
+import 'package:flutter_mvp_starter/core/network/network_exception.dart';
 
 class ApiClient {
   ApiClient(this._dio);

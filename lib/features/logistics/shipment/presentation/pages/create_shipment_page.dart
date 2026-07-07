@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:logistic_operation/core/utils/validators.dart';
-import 'package:logistic_operation/features/logistics/shipment/domain/entities/shipment.dart';
-import 'package:logistic_operation/features/logistics/shipment/domain/params/create_shipment.dart';
-import 'package:logistic_operation/features/logistics/shipment/presentation/controllers/create_shipment_form_controller.dart';
-import 'package:logistic_operation/features/logistics/shipment/presentation/providers/shipment_notifier.dart';
-import 'package:logistic_operation/shared/widgets/app_button.dart';
-import 'package:logistic_operation/shared/widgets/app_dropdown.dart';
-import 'package:logistic_operation/shared/widgets/app_text_field.dart';
+import 'package:flutter_mvp_starter/core/utils/validators.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/domain/entities/shipment.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/domain/params/create_shipment.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/presentation/controllers/create_shipment_form_controller.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/presentation/providers/shipment_notifier.dart';
+import 'package:flutter_mvp_starter/shared/widgets/app_button.dart';
+import 'package:flutter_mvp_starter/shared/widgets/app_dropdown.dart';
+import 'package:flutter_mvp_starter/shared/widgets/app_text_field.dart';
 
 import '../../../../../shared/theme/app_spacing.dart';
 

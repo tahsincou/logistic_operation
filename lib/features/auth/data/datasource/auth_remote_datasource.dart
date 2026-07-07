@@ -1,4 +1,4 @@
-import 'package:logistic_operation/features/auth/data/model/user_model.dart';
+import 'package:flutter_mvp_starter/features/auth/data/model/user_model.dart';
 
 import '../dto/login_request.dart';
 

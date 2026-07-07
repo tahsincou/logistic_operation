@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logistic_operation/core/app.dart';
-import 'package:logistic_operation/core/config/app_config.dart';
+import 'package:flutter_mvp_starter/core/app.dart';
+import 'package:flutter_mvp_starter/core/config/app_config.dart';
 
 Future<void> bootstrap() async {
   WidgetsFlutterBinding.ensureInitialized();

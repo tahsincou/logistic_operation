@@ -1,4 +1,4 @@
-import 'package:logistic_operation/features/auth/data/repository/auth_repository.dart';
+import 'package:flutter_mvp_starter/features/auth/data/repository/auth_repository.dart';
 
 class LogoutUseCase {
   final AuthRepository repository;

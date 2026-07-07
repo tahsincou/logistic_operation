@@ -1,7 +1,7 @@
-import 'package:logistic_operation/core/network/api_client.dart';
-import 'package:logistic_operation/features/logistics/shipment/data/models/shipement_model.dart';
-import 'package:logistic_operation/features/logistics/shipment/data/models/shipment_details_model.dart';
-import 'package:logistic_operation/features/logistics/shipment/domain/params/create_shipment.dart';
+import 'package:flutter_mvp_starter/core/network/api_client.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/data/models/shipement_model.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/data/models/shipment_details_model.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/domain/params/create_shipment.dart';
 import '../../domain/entities/shipment.dart';
 
 class ShipmentRemoteDataSource {

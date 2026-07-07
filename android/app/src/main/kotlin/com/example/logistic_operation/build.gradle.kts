@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.flutter_mvp_starter"
+    namespace = "com.example.package:flutter_mvp_starter"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 

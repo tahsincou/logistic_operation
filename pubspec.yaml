@@ -1,5 +1,5 @@
-name: logistic_operation
-description: "Flutter project for logistic operation"
+name: flutter_mvp_starter
+description: "Starter App"
 
 publish_to: 'none'
 

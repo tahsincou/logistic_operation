@@ -1,11 +1,11 @@
 import 'package:go_router/go_router.dart';
-import 'package:logistic_operation/features/auth/presentaion/pages/login_page.dart';
-import 'package:logistic_operation/features/dashboard/presentation/pages/dashboard_page.dart';
-import 'package:logistic_operation/features/logistics/shipment/domain/entities/shipment.dart';
-import 'package:logistic_operation/features/logistics/shipment/presentation/pages/create_shipment_page.dart';
-import 'package:logistic_operation/features/logistics/shipment/presentation/pages/shipment_details_page.dart';
-import 'package:logistic_operation/features/settings/settings_page.dart';
-import 'package:logistic_operation/features/splash/presentation/pages/splash_page.dart';
+import 'package:flutter_mvp_starter/features/auth/presentaion/pages/login_page.dart';
+import 'package:flutter_mvp_starter/features/dashboard/presentation/pages/dashboard_page.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/domain/entities/shipment.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/presentation/pages/create_shipment_page.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/presentation/pages/shipment_details_page.dart';
+import 'package:flutter_mvp_starter/features/settings/settings_page.dart';
+import 'package:flutter_mvp_starter/features/splash/presentation/pages/splash_page.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(

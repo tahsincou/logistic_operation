@@ -1,4 +1,4 @@
-import 'package:logistic_operation/core/config/environment.dart';
+import 'package:flutter_mvp_starter/core/config/environment.dart';
 
 import '../services/environment_service.dart';
 

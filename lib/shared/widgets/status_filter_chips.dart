@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:logistic_operation/features/logistics/shipment/domain/entities/shipment_status.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/domain/entities/shipment_status.dart';
 
 class StatusFilterChips extends StatelessWidget {
   final ShipmentStatusFilter selected;

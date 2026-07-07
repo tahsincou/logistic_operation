@@ -1,4 +1,4 @@
-import 'package:logistic_operation/features/logistics/shipment/domain/params/create_shipment.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/domain/params/create_shipment.dart';
 
 import '../repository/shipment_repository.dart';
 

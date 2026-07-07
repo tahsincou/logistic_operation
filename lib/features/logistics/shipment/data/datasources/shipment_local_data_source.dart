@@ -1,4 +1,4 @@
-import 'package:logistic_operation/features/logistics/shipment/data/models/shipement_model.dart';
+import 'package:flutter_mvp_starter/features/logistics/shipment/data/models/shipement_model.dart';
 
 abstract class ShipmentLocalDataSource {
   Future<List<ShipmentModel>> getShipments();

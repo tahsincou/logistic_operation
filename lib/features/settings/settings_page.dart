@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logistic_operation/core/locale/locale_extension.dart';
-import 'package:logistic_operation/core/providers/theme_provider.dart';
-import 'package:logistic_operation/shared/theme/app_radius.dart';
-import 'package:logistic_operation/shared/theme/app_spacing.dart';
+import 'package:flutter_mvp_starter/core/locale/locale_extension.dart';
+import 'package:flutter_mvp_starter/core/providers/theme_provider.dart';
+import 'package:flutter_mvp_starter/shared/theme/app_radius.dart';
+import 'package:flutter_mvp_starter/shared/theme/app_spacing.dart';
 
 import '../../core/providers/locale_provider.dart';
 
 class SettingsPage extends ConsumerStatefulWidget {
+  // ignore: use_super_parameters
   const SettingsPage({Key? key}) : super(key: key);
 
   @override
